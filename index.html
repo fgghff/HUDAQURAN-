@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>هدى القرآن</title>
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #004d40 0%, #00251a 100%);
+      color: #fff;
+      min-height: 100vh;
+      position: relative;
+      padding-bottom: 80px;
+    }
+
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      background: rgba(0, 69, 64, 0.9);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+
+    .header-title {
+      text-align: center;
+      font-size: 2em;
+      padding: 20px;
+      background: rgba(0,0,0,0.2);
+      border-bottom: 2px solid #ffd700;
+      font-family: 'Amiri', serif;
+    }
+
+    .button-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      padding: 30px 15px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .option-button {
+      position: relative;
+      padding: 25px;
+      background: rgba(0, 77, 64, 0.8);
+      color: #ffd700;
+      font-size: 1.3em;
+      text-align: center;
+      border-radius: 12px;
+      border: 2px solid #004d40;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 120px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      flex-direction: column;
+    }
+
+    .option-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    }
+
+    .footer-menu {
+      display: flex;
+      justify-content: space-around;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background: rgba(0, 69, 64, 0.95);
+      padding: 15px 0;
+      border-top: 2px solid #ffd700;
+      backdrop-filter: blur(5px);
+      z-index: 1000;
+    }
+
+    .footer-menu a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1em;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: 0.3s;
+      padding: 8px 20px;
+      border-radius: 8px;
+      min-width: 90px;
+    }
+
+    .footer-menu a:hover, 
+    .footer-menu a.active {
+      color: #ffd700;
+      background: rgba(255,255,255,0.1);
+    }
+
+    .footer-menu i {
+      font-size: 1.8em;
+      margin-bottom: 8px;
+    }
+
+    .search-container {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: rgba(0, 69, 64, 0.95);
+      padding: 15px;
+      display: none;
+      z-index: 1000;
+    }
+
+    .search-container.visible {
+      display: block;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 12px;
+      border-radius: 25px;
+      border: 2px solid #ffd700;
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+      font-size: 1em;
+    }
+
+    @media (max-width: 768px) {
+      .header-title {
+        font-size: 1.5em;
+        padding: 15px;
+      }
+
+      .button-container {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding: 20px 10px;
+      }
+
+      .option-button {
+        font-size: 1.1em;
+        padding: 20px;
+        min-height: 100px;
+      }
+
+      .footer-menu a {
+        font-size: 0.9em;
+        padding: 8px 15px;
+        min-width: 80px;
+      }
+
+      .footer-menu i {
+        font-size: 1.5em;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .top-bar {
+        padding: 10px 15px;
+      }
+
+      .header-title {
+        font-size: 1.3em;
+        padding: 10px;
+      }
+
+      .option-button {
+        font-size: 1em;
+      }
+
+      .footer-menu {
+        padding: 10px 0;
+      }
+
+      .footer-menu a {
+        font-size: 0.8em;
+        padding: 8px 10px;
+        min-width: 70px;
+      }
+
+      .footer-menu i {
+        font-size: 1.3em;
+        margin-bottom: 5px;
+      }
+
+      .search-input {
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    <i class="fas fa-search" onclick="toggleSearch()"></i>
+    <i class="fas fa-bars"></i>
+  </div>
+
+  <div class="search-container" id="searchBox">
+    <input type="text" class="search-input" placeholder="ابحث هنا...">
+  </div>
+
+  <div class="header-title">هدى القرآن</div>
+
+  <div class="button-container">
+    <a href="https://fdxddzss.github.io/Fffie/" class="option-button">
+      <i class="fas fa-headphones"></i>
+      <span>الاستماع إلى القرآن</span>
+    </a>
+    <a href="https://fdxddzss.github.io/Quran-/" class="option-button">
+      <i class="fas fa-book"></i>
+      <span>قراءة القرآن</span>
+    </a>
+    <a href="https://www.example.com/prayer-times" class="option-button">
+      <i class="fas fa-mosque"></i>
+      <span>أوقات الصلاة</span>
+    </a>
+    <a href="https://www.example.com/tafsir" class="option-button">
+      <i class="fas fa-book-open"></i>
+      <span>التفسير</span>
+    </a>
+  </div>
+
+  
+
+  <div class="footer-menu">
+    <a href="https://www.example.com/home" class="active">
+      <i class="fas fa-home"></i>
+      <span>الرئيسية</span>
+    </a>
+    <a href="https://www.example.com/live">
+      <i class="fas fa-broadcast-tower"></i>
+      <span>البث المباشر</span>
+    </a>
+    <a href="https://www.example.com/history">
+      <i class="fas fa-history"></i>
+      <span>السيرة النبوية</span>
+    </a>
+    <a href="https://www.example.com/adhkar">
+      <i class="fas fa-star-and-crescent"></i>
+      <span>الأذكار</span>
+    </a>
+    <a href="https://www.example.com/community">
+      <i class="fas fa-user-friends"></i>
+      <span>المجتمع</span>
+    </a>
+  </div>
+
+  <script>
+    function toggleSearch() {
+      const searchBox = document.getElementById('searchBox');
+      searchBox.classList.toggle('visible');
+    }
+
+    document.addEventListener('click', (e) => {
+      const searchBox = document.getElementById('searchBox');
+      if (!e.target.closest('.fa-search
