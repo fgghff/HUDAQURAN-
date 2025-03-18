@@ -21,48 +21,13 @@
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
     }
-
-    /* تنسيق أزرار التحكم */
-    .controls {
-      position: absolute;
-      bottom: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 5px;
-      background: rgba(0, 0, 0, 0.5);
-      padding: 10px;
-      border-radius: 10px;
-    }
-
-    .controls button {
-      padding: 8px 12px;
-      border: none;
-      background: #FFA000;
-      color: white;
-      cursor: pointer;
-      border-radius: 5px;
-      font-size: 14px;
-    }
-
-    .controls button:hover {
-      background: #ffcc40;
-    }
   </style>
 </head>
 <body>
   <div id="my-jwplayer"></div>
-  <div class="controls">
-      <button onclick="setVideoMode('16:9')">16:9</button>
-      <button onclick="setVideoMode('4:3')">4:3</button>
-      <button onclick="setVideoMode('fit')">Fit Parent</button>
-      <button onclick="setVideoMode('fill')">Fill Parent</button>
-      <button onclick="setVideoMode('wrap')">Wrap Parent</button>
-      <button onclick="setVideoMode('match')">Match Parent</button>
-  </div>
 
   <script>
-    let streamUrl = "https://ssc-news-live-enc.edgenextcdn.net/out/v1/ef466f43623c4bbaa3f905b566ec35ea/index.mpd?|drmScheme=clearkey&drmLicense=3d04975236a44f62857d181597705ee6:362133e9cb13189ad4fe095ced216f60";
+    let streamUrl = "https://live-d-02-todtv-db.akamaized.net/variant/v1blackout/spo-hd-38-d-shortdvr/DASH_DASH/Live/channel(spo-hd-39)/manifest.mpd?hdnts=st=1742281192~exp=1742295592~acl=/variant/v1blackout/spo-hd-38-d-shortdvr/*~data=92e726fc-4b0e-402c-b746-1811dab11d33~hmac=e50229ab6b84af5fa315e4a1c0dd145fee1cfac4324087456af574b2466c48b4&hdcore=2.11.3";
 
     var player = jwplayer("my-jwplayer").setup({
       file: streamUrl,
@@ -74,8 +39,8 @@
       mute: false,
       drm: {
         clearkey: {
-          keyId: "3d04975236a44f62857d181597705ee6",
-          key: "362133e9cb13189ad4fe095ced216f60"
+          keyId: "0a7934dddc3136a6922584b96c3fd1e5",
+          key: "676e6d1dd00bfbe266003efaf0e3aa02"
         }
       },
       skin: {
@@ -86,36 +51,6 @@
       }
     });
 
-    // تغيير نسبة العرض والارتفاع
-    function setVideoMode(mode) {
-      const videoElement = document.querySelector('.jwplayer .jw-media video');
-      if (!videoElement) return;
-
-      switch (mode) {
-        case '16:9':
-          videoElement.style.width = "100%";
-          videoElement.style.height = "auto";
-          break;
-        case '4:3':
-          videoElement.style.width = "75%";
-          videoElement.style.height = "100%";
-          break;
-        case 'fit':
-          videoElement.style.objectFit = "contain";
-          break;
-        case 'fill':
-          videoElement.style.objectFit = "fill";
-          break;
-        case 'wrap':
-          videoElement.style.objectFit = "cover";
-          break;
-        case 'match':
-          videoElement.style.width = "100%";
-          videoElement.style.height = "100%";
-          break;
-      }
-    }
-
     player.on('ready', function() {
       setTimeout(() => {
         const videoElement = document.querySelector('.jwplayer .jw-media video');
@@ -123,6 +58,25 @@
           videoElement.style.objectFit = 'fill'; // جعل الفيديو مملوء الشاشة تلقائيًا
         }
       }, 500);
+
+      // إضافة زر التصغير والتكبير داخل شريط أدوات المشغل
+      let isZoomed = false;
+      player.addButton(
+        "https://hamada-tv.com/fullscreen.png", // أيقونة الزر
+        "تغيير حجم الفيديو", // العنوان عند تمرير الفأرة
+        function() {
+          const videoElement = document.querySelector('.jwplayer .jw-media video');
+          if (videoElement) {
+            if (isZoomed) {
+              videoElement.style.objectFit = 'fill';
+            } else {
+              videoElement.style.objectFit = 'contain';
+            }
+            isZoomed = !isZoomed;
+          }
+        },
+        "resizeButton"
+      );
     });
   </script>
 </body>
