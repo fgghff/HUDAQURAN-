@@ -36,7 +36,6 @@
         <p id="question">ما هي عاصمة تركيا؟</p>
         <input type="text" id="answer" placeholder="اكتب إجابتك هنا">
         <button onclick="submitAnswer()">إرسال الإجابة</button>
-
         <h3 class="hidden" id="result"></h3>
 
         <h3>إرسال صورة الإجابة</h3>
@@ -46,8 +45,8 @@
     </div>
 
     <script>
-        const botToken = "ضع_توكن_البوت_هنا";  
-        const chatId = "ضع_chat_id_هنا";  
+        const botToken = "ضع_توكن_البوت_هنا";  // استبدل هذا بالتوكن الخاص بك
+        const chatId = "ضع_chat_id_هنا";  // ضع هنا معرف حساب تليجرام الصحيح (رقمي)
 
         function submitAnswer() {
             let question = document.getElementById("question").innerText;
@@ -73,10 +72,13 @@
                     resultText.innerText = "تم إرسال الإجابة بنجاح!";
                     resultText.classList.remove("hidden");
                 } else {
-                    alert("حدث خطأ أثناء الإرسال!");
+                    alert("حدث خطأ أثناء الإرسال! تحقق من صحة `chat_id` و `botToken`.");
                 }
             })
-            .catch(error => alert("فشل الاتصال بتليجرام!"));
+            .catch(error => {
+                console.error("Error:", error);
+                alert("فشل الاتصال بتليجرام! تأكد من أن التوكن صحيح وأن البوت لديه الصلاحية لإرسال الرسائل.");
+            });
         }
 
         function sendImage() {
@@ -103,10 +105,13 @@
                     imageResult.innerText = "تم إرسال الصورة بنجاح!";
                     imageResult.classList.remove("hidden");
                 } else {
-                    alert("حدث خطأ أثناء إرسال الصورة!");
+                    alert("حدث خطأ أثناء إرسال الصورة! تحقق من `chat_id` و `botToken`.");
                 }
             })
-            .catch(error => alert("فشل الاتصال بتليجرام!"));
+            .catch(error => {
+                console.error("Error:", error);
+                alert("فشل الاتصال بتليجرام! تأكد من أن التوكن صحيح وأن البوت لديه الصلاحية لإرسال الصور.");
+            });
         }
     </script>
 
