@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>TOD</title>
+    <title>FAST TV LIVE</title>
     <style>
         :root {
             --primary-color: #22b14c;
@@ -210,7 +210,7 @@
                 channels.slice(index * 9, (index + 1) * 9).forEach(channel => {
                     const card = document.createElement('div');
                     card.className = 'channel-card';
-                    card.innerHTML = `<a href="${channel.link}"><img src="${channel.img}" class="channel-logo"><p class="channel-name">${channel.name}</p></a>`;
+                    card.innerHTML = `<a href="${channel.link}" target="_blank"><img src="${channel.img}" class="channel-logo"><p class="channel-name">${channel.name}</p></a>`;
                     card.addEventListener('contextmenu', (e) => {
                         e.preventDefault();
                         navigator.clipboard.writeText(channel.link).then(() => {
@@ -241,4 +241,4 @@
     </script>
 
 </body>
-    </html>
+</html>
