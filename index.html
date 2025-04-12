@@ -1,4 +1,4 @@
-DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar">
 <head>
    <meta charset="UTF-8">
@@ -24,10 +24,8 @@ DOCTYPE html>
 
            let isExpanded = false;
 
-           // جلب رابط البث من PHP
            const streamUrl = "https://todtv-live-spo-prod.akamaized.net/Content/Channel/svc-spo-hd-08-dt/DASH/playlist.mpd?start=1744473614000&end=1744484400000&hdnts=st=1744483148~exp=1744490397~acl=*/Content/Channel/svc-spo-hd-08-dt/DASH/*~id=a720ebec-0d88-4916-ba6f-b38b89156128~data=aXA9NDYuMjAyLjE3Mi42Nw~hmac=b58b1ddadfb1eeafa10301f276a8432936477a373e531f2ad7fb6cd6ed4a07b4&_nocache=2db94b2f67c80b8acfc8a0b674a67f10";
 
-           // رمز SVG لزر التمديد
            const expandSvg = `<svg fill="#ffffff" version="1.1" id="expand_icon" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 100 100" xml:space="preserve">
               <g>
                 <path d="M22.661,20.5H36c1.104,0,2-0.896,2-2s-0.896-2-2-2H19c-1.104,0-2.5,1.276-2.5,2.381v17c0,1.104,0.896,2,2,2s2-0.896,2-2V24.876l16.042,15.791c0.391,0.391,1.027,0.586,1.539,0.586s1.086-0.195,1.477-0.586c0.781-0.781,0.812-2.237,0.031-3.019L22.661,20.5z"/>
@@ -37,7 +35,6 @@ DOCTYPE html>
               </g>
             </svg>`;
 
-           // تهيئة المشغل
            function setupPlayer() {
                jwplayer("player").setup({
                    width: "100%",
@@ -50,13 +47,6 @@ DOCTYPE html>
                    horizontalVolumeSlider: true,
                    playbackRateControls: true, 
                    playbackRates: [0.5, 1, 1.25, 1.5, 2],
-                   logo: {
-                file: "https://raw.githubusercontent.com/1ffu1/hamada-tv/refs/heads/main/logo.png",
-                link: "https://t.me/Hamada_tv1",
-                hide: false,
-                position: "bottom-left",
-                margin: 20
-            },
                    aspectratio: "16:9",
                    playlist: [{
                       sources: [{
@@ -65,8 +55,8 @@ DOCTYPE html>
                          drm: {
                             clearkey: {
                                keyId: "39471a4508f1387d96867b6e8ffa1e39", 
-                        key: "ddd1fa7cd620953469679dca5bc19e54"
-                     }
+                               key: "ddd1fa7cd620953469679dca5bc19e54"
+                            }
                          },
                          label: "HD"
                       }]
@@ -85,7 +75,6 @@ DOCTYPE html>
                });
            }
 
-           // تبديل وضع التمديد
            function toggleExpand() {
               const videoElement = document.querySelector("#player video");
               if (!videoElement) return;
@@ -94,7 +83,6 @@ DOCTYPE html>
               updateExpandButtonTooltip();
            }
 
-           // تحديث تلميح زر التمديد
            function updateExpandButtonTooltip() {
               const button = document.querySelector('.jw-expandButton');
               if (button) {
@@ -102,7 +90,6 @@ DOCTYPE html>
               }
            }
 
-           // بدء تشغيل المشغل
            if (streamUrl) {
                setupPlayer();
            } else {
