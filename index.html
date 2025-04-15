@@ -7,7 +7,7 @@
   <style>
     body {
       font-family: 'Cairo', sans-serif;
-      background-color: #f0f4f8;
+      background-color: #eef3fa;
       margin: 0;
       padding: 0;
       color: #333;
@@ -88,13 +88,12 @@
       text-align: center;
       font-size: 14px;
       vertical-align: middle;
+      word-wrap: break-word;
     }
 
     th {
       background-color: #f1f7ff;
       font-weight: bold;
-      white-space: normal;
-      word-wrap: break-word;
     }
 
     th input {
@@ -105,6 +104,7 @@
       font-size: 14px;
       text-align: center;
       outline: none;
+      white-space: normal;
     }
 
     td input {
@@ -121,7 +121,11 @@
       background-color: #e0ecff;
       font-weight: bold;
       min-width: 160px;
-      max-width: 180px;
+    }
+
+    th:nth-child(2),
+    td:nth-child(2) {
+      min-width: 240px;
     }
 
     @media (max-width: 600px) {
@@ -198,4 +202,4 @@
   </script>
 
 </body>
-  </html>
+                </html>
