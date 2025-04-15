@@ -6,20 +6,21 @@
   <style>
     body {
       font-family: 'Cairo', sans-serif;
-      background-color: #f5f8ff;
+      background-color: #f0f4f8;
       margin: 0;
       padding: 0;
+      color: #333;
     }
 
     .header {
-      background: linear-gradient(to left, #2b45ff, #00c2ff);
+      background: linear-gradient(to left, #1e3c72, #2a5298);
       color: white;
       text-align: center;
-      padding: 20px 0;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      padding: 25px 10px 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
 
-    .header input {
+    .header input.title {
       background: transparent;
       border: none;
       color: white;
@@ -30,40 +31,32 @@
       outline: none;
     }
 
-    .top-controls {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin: 20px 0;
+    .day-field {
+      margin-top: 10px;
     }
 
-    .top-controls label {
-      margin: 5px;
-      font-size: 17px;
-      font-weight: bold;
-    }
-
-    .top-controls input {
-      padding: 8px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
+    .day-field input {
+      padding: 6px 10px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      width: 200px;
       text-align: center;
-      font-size: 15px;
-      width: 250px;
-      max-width: 90%;
-      background-color: white;
+      background-color: #ffffffcc;
+      color: #222;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
     }
 
     .table-wrapper {
       overflow-x: auto;
-      padding: 0 15px 30px;
+      padding: 20px;
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
       background-color: white;
-      border-radius: 10px;
+      border-radius: 12px;
       overflow: hidden;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.07);
     }
@@ -77,7 +70,7 @@
     }
 
     th {
-      background-color: #eaf0ff;
+      background-color: #f1f7ff;
       font-weight: bold;
       white-space: normal;
       word-wrap: break-word;
@@ -104,10 +97,10 @@
 
     th:first-child,
     td:first-child {
-      background-color: #d0e4ff;
+      background-color: #e0ecff;
       font-weight: bold;
-      min-width: 120px;
-      max-width: 140px;
+      min-width: 140px;
+      max-width: 160px;
     }
 
     @media (max-width: 600px) {
@@ -116,12 +109,13 @@
         padding: 6px;
       }
 
-      .top-controls input {
-        font-size: 13px;
+      .header input.title {
+        font-size: 20px;
       }
 
-      .header input {
-        font-size: 20px;
+      .day-field input {
+        width: 160px;
+        font-size: 14px;
       }
     }
   </style>
@@ -129,18 +123,10 @@
 <body>
 
   <div class="header">
-    <input type="text" value="جدول المحاضرة اليومي">
-  </div>
-
-  <div class="top-controls">
-    <label>
-      اسم المحاضرة:
-      <input type="text" value="معهد الشهيد أحمد حسن متراس">
-    </label>
-    <label>
-      اليوم:
+    <input class="title" type="text" value="جدول المحاضرة اليومي">
+    <div class="day-field">
       <input type="text" placeholder="اكتب اليوم هنا">
-    </label>
+    </div>
   </div>
 
   <div class="table-wrapper">
@@ -170,4 +156,4 @@
   </div>
 
 </body>
-  </html>
+</html>
