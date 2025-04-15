@@ -2,76 +2,85 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <title>جدول المحاضرة</title>
+  <title>جدول المحاضرة اليومي</title>
   <style>
     body {
-      font-family: 'Arial', sans-serif;
-      background-color: #f2f6ff;
+      font-family: 'Cairo', sans-serif;
+      background-color: #f5f8ff;
       margin: 0;
       padding: 0;
     }
 
     .header {
-      background-color: #2b45ff;
+      background: linear-gradient(to left, #2b45ff, #00c2ff);
       color: white;
       text-align: center;
-      padding: 15px 0;
+      padding: 20px 0;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     }
 
     .header input {
       background: transparent;
       border: none;
       color: white;
-      font-size: 22px;
+      font-size: 26px;
       font-weight: bold;
       text-align: center;
       width: 90%;
+      outline: none;
     }
 
     .top-controls {
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin: 10px 0;
+      margin: 20px 0;
     }
 
     .top-controls label {
       margin: 5px;
-      font-size: 16px;
+      font-size: 17px;
+      font-weight: bold;
     }
 
     .top-controls input {
-      padding: 6px;
+      padding: 8px;
       border: 1px solid #ccc;
-      border-radius: 5px;
+      border-radius: 6px;
       text-align: center;
-      font-size: 14px;
-      width: 220px;
+      font-size: 15px;
+      width: 250px;
       max-width: 90%;
+      background-color: white;
     }
 
     .table-wrapper {
       overflow-x: auto;
+      padding: 0 15px 30px;
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
-      margin: 15px auto;
+      background-color: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.07);
     }
 
     th, td {
-      border: 1px solid #ccc;
-      padding: 8px;
+      border: 1px solid #dee2e6;
+      padding: 12px 8px;
       text-align: center;
-      font-size: 13px;
+      font-size: 14px;
       vertical-align: middle;
     }
 
     th {
+      background-color: #eaf0ff;
+      font-weight: bold;
       white-space: normal;
       word-wrap: break-word;
-      max-width: 140px;
     }
 
     th input {
@@ -79,8 +88,9 @@
       border: none;
       background: transparent;
       font-weight: bold;
-      font-size: 13px;
+      font-size: 14px;
       text-align: center;
+      outline: none;
     }
 
     td input {
@@ -89,12 +99,15 @@
       background: transparent;
       text-align: center;
       font-size: 13px;
+      outline: none;
     }
 
-    .time-col {
-      background-color: #e4ecff;
+    th:first-child,
+    td:first-child {
+      background-color: #d0e4ff;
       font-weight: bold;
-      max-width: 100px;
+      min-width: 120px;
+      max-width: 140px;
     }
 
     @media (max-width: 600px) {
@@ -105,6 +118,10 @@
 
       .top-controls input {
         font-size: 13px;
+      }
+
+      .header input {
+        font-size: 20px;
       }
     }
   </style>
@@ -117,7 +134,7 @@
 
   <div class="top-controls">
     <label>
-      محاضرة:
+      اسم المحاضرة:
       <input type="text" value="معهد الشهيد أحمد حسن متراس">
     </label>
     <label>
@@ -139,18 +156,18 @@
         </tr>
       </thead>
       <tbody>
-        <tr><td class="time-col"><input type="text" value="AM 9:00 - 8:00"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-        <tr><td class="time-col"><input type="text" value="AM 10:00 - 9:00"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-        <tr><td class="time-col"><input type="text" value="AM 11:00 - 10:00"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-        <tr><td class="time-col"><input type="text" value="PM 12:00 - 11:00"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-        <tr><td class="time-col"><input type="text" value="PM 1:00 - 12:00"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-        <tr><td class="time-col"><input type="text" value="PM 2:00 - 1:00"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-        <tr><td class="time-col"><input type="text" value="PM 3:00 - 2:00"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-        <tr><td class="time-col"><input type="text" value="PM 4:00 - 3:00"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-        <tr><td class="time-col"><input type="text" value="PM 5:00 - 4:00"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+        <tr><td><input type="text" value="AM 9:00 - 8:00"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+        <tr><td><input type="text" value="AM 10:00 - 9:00"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+        <tr><td><input type="text" value="AM 11:00 - 10:00"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+        <tr><td><input type="text" value="PM 12:00 - 11:00"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+        <tr><td><input type="text" value="PM 1:00 - 12:00"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+        <tr><td><input type="text" value="PM 2:00 - 1:00"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+        <tr><td><input type="text" value="PM 3:00 - 2:00"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+        <tr><td><input type="text" value="PM 4:00 - 3:00"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+        <tr><td><input type="text" value="PM 5:00 - 4:00"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
       </tbody>
     </table>
   </div>
 
 </body>
-                                                                                                                                          </html>
+  </html>
