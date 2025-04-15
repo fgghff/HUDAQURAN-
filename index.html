@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <title>جدول المحاضرة اليومي</title>
+  <title>جدول المحاضرة</title>
   <style>
     body {
       font-family: 'Arial', sans-serif;
@@ -11,12 +11,21 @@
       padding: 0;
     }
 
-    h1 {
+    .header {
       background-color: #2b45ff;
       color: white;
       text-align: center;
       padding: 15px 0;
+    }
+
+    .header input {
+      background: transparent;
+      border: none;
+      color: white;
       font-size: 22px;
+      font-weight: bold;
+      text-align: center;
+      width: 90%;
     }
 
     .top-controls {
@@ -62,7 +71,7 @@
     th {
       white-space: normal;
       word-wrap: break-word;
-      max-width: 120px;
+      max-width: 140px;
     }
 
     th input {
@@ -85,6 +94,7 @@
     .time-col {
       background-color: #e4ecff;
       font-weight: bold;
+      max-width: 100px;
     }
 
     @media (max-width: 600px) {
@@ -101,7 +111,9 @@
 </head>
 <body>
 
-  <h1>جدول المحاضرة اليومي</h1>
+  <div class="header">
+    <input type="text" value="جدول المحاضرة اليومي">
+  </div>
 
   <div class="top-controls">
     <label>
@@ -141,4 +153,4 @@
   </div>
 
 </body>
-  </html>
+                                                                                                                                          </html>
