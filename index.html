@@ -69,6 +69,7 @@
     }
 
     .table-wrapper {
+      width: 100%;
       overflow-x: auto;
       padding: 20px;
     }
@@ -80,7 +81,7 @@
       border-radius: 12px;
       overflow: hidden;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.07);
-      table-layout: auto;
+      table-layout: fixed;
     }
 
     th, td {
@@ -98,47 +99,40 @@
       font-weight: bold;
     }
 
-    th input {
+    th input, td input {
       width: 100%;
       border: none;
       background: transparent;
-      font-weight: bold;
       font-size: 14px;
       text-align: center;
       outline: none;
-      white-space: normal;
-    }
-
-    td input {
-      width: 100%;
-      border: none;
-      background: transparent;
-      text-align: center;
-      font-size: 13px;
-      outline: none;
+      direction: rtl;
     }
 
     th:first-child,
     td:first-child {
       background-color: #e0ecff;
       font-weight: bold;
-      min-width: 140px;
-      width: 160px;
+      width: 130px;
+      min-width: 100px;
     }
 
     th:not(:first-child),
     td:not(:first-child) {
-      min-width: 220px;
+      width: auto;
     }
 
-    @media (max-width: 600px) {
-      th, td {
+    @media (max-width: 768px) {
+      table {
         font-size: 12px;
-        padding: 6px;
+      }
+
+      th input, td input {
+        font-size: 12px;
       }
 
       .header input.title {
-        font-size: 20px;
+        font-size: 22px;
       }
 
       .day-field input {
@@ -194,7 +188,7 @@
       const area = document.getElementById("capture-area");
       html2canvas(area, {
         backgroundColor: "#fff",
-        scale: 5,
+        scale: 4,
         useCORS: true,
       }).then(canvas => {
         const link = document.createElement("a");
@@ -206,4 +200,4 @@
   </script>
 
 </body>
-  </html>
+                                                                                                                                                                                  </html>
