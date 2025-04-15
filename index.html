@@ -6,11 +6,10 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <style>
     body {
-      font-family: 'Cairo', sans-serif;
+      font-family: 'Arial', sans-serif;
       background-color: #eef3fa;
       margin: 0;
       padding: 0;
-      color: #333;
     }
 
     .header {
@@ -18,14 +17,13 @@
       color: white;
       text-align: center;
       padding: 25px 10px 10px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
 
     .header input.title {
       background: transparent;
       border: none;
       color: white;
-      font-size: 28px;
+      font-size: 30px;
       font-weight: bold;
       text-align: center;
       width: 90%;
@@ -37,15 +35,12 @@
     }
 
     .day-field input {
-      padding: 8px 12px;
+      padding: 10px;
       border: none;
       border-radius: 5px;
-      font-size: 18px;
-      width: 220px;
+      font-size: 20px;
+      width: 250px;
       text-align: center;
-      background-color: #ffffffcc;
-      color: #222;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
     }
 
     .btn-container {
@@ -56,21 +51,15 @@
     .save-btn {
       background-color: #2a5298;
       color: white;
-      padding: 10px 18px;
+      padding: 12px 20px;
       border: none;
       border-radius: 8px;
-      font-size: 16px;
+      font-size: 18px;
       cursor: pointer;
-      transition: 0.3s;
-    }
-
-    .save-btn:hover {
-      background-color: #1e3c72;
     }
 
     .table-wrapper {
       width: 100%;
-      overflow-x: auto;
       padding: 20px;
     }
 
@@ -79,29 +68,27 @@
       border-collapse: collapse;
       background-color: white;
       border-radius: 12px;
-      overflow: hidden;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.07);
-      table-layout: fixed;
     }
 
     th, td {
-      border: 1px solid #dee2e6;
-      padding: 16px 10px;
+      border: 1px solid #ccc;
+      padding: 15px;
       text-align: center;
-      font-size: 16px;
+      font-size: 18px;
       vertical-align: middle;
-      word-wrap: break-word;
-      white-space: normal;
+      word-break: break-word;
     }
 
     th input, td input {
       width: 100%;
       border: none;
       background: transparent;
-      font-size: 16px;
+      font-size: 18px;
       text-align: center;
       outline: none;
-      direction: rtl;
+      white-space: normal;
+      word-break: break-word;
     }
 
     th {
@@ -113,33 +100,13 @@
     td:first-child {
       background-color: #e0ecff;
       font-weight: bold;
-      width: 140px;
-      min-width: 120px;
-    }
-
-    @media (max-width: 768px) {
-      table {
-        font-size: 14px;
-      }
-
-      th input, td input {
-        font-size: 14px;
-      }
-
-      .header input.title {
-        font-size: 24px;
-      }
-
-      .day-field input {
-        width: 180px;
-        font-size: 16px;
-      }
+      min-width: 130px;
     }
   </style>
 </head>
 <body>
 
-  <div id="capture-area" style="background-color: white; padding-bottom: 20px;">
+  <div id="capture-area" style="background-color: white;">
     <div class="header">
       <input class="title" type="text" value="جدول المحاضرة اليومي">
       <div class="day-field">
@@ -160,7 +127,6 @@
           </tr>
         </thead>
         <tbody>
-          <!-- صفوف الوقت -->
           ${['8:00 - 9:00 ص', '9:00 - 10:00 ص', '10:00 - 11:00 ص', '11:00 - 12:00 م', '12:00 - 1:00 م', '1:00 - 2:00 م', '2:00 - 3:00 م', '3:00 - 4:00 م', '4:00 - 5:00 م'].map(time => `
             <tr>
               <td><input type="text" value="${time}"></td>
@@ -184,8 +150,9 @@
       const area = document.getElementById("capture-area");
       html2canvas(area, {
         backgroundColor: "#fff",
-        scale: 5, // رفع الدقة أكثر
+        scale: 4, // رفع الجودة
         useCORS: true,
+        scrollY: -window.scrollY
       }).then(canvas => {
         const link = document.createElement("a");
         link.download = 'جدول_المحاضرة.png';
