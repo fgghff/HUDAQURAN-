@@ -25,7 +25,7 @@
       background: transparent;
       border: none;
       color: white;
-      font-size: 26px;
+      font-size: 28px;
       font-weight: bold;
       text-align: center;
       width: 90%;
@@ -37,11 +37,11 @@
     }
 
     .day-field input {
-      padding: 6px 10px;
+      padding: 8px 12px;
       border: none;
       border-radius: 5px;
-      font-size: 16px;
-      width: 200px;
+      font-size: 18px;
+      width: 220px;
       text-align: center;
       background-color: #ffffffcc;
       color: #222;
@@ -86,12 +86,22 @@
 
     th, td {
       border: 1px solid #dee2e6;
-      padding: 12px 8px;
+      padding: 16px 10px;
       text-align: center;
-      font-size: 14px;
+      font-size: 16px;
       vertical-align: middle;
       word-wrap: break-word;
       white-space: normal;
+    }
+
+    th input, td input {
+      width: 100%;
+      border: none;
+      background: transparent;
+      font-size: 16px;
+      text-align: center;
+      outline: none;
+      direction: rtl;
     }
 
     th {
@@ -99,45 +109,30 @@
       font-weight: bold;
     }
 
-    th input, td input {
-      width: 100%;
-      border: none;
-      background: transparent;
-      font-size: 14px;
-      text-align: center;
-      outline: none;
-      direction: rtl;
-    }
-
     th:first-child,
     td:first-child {
       background-color: #e0ecff;
       font-weight: bold;
-      width: 130px;
-      min-width: 100px;
-    }
-
-    th:not(:first-child),
-    td:not(:first-child) {
-      width: auto;
+      width: 140px;
+      min-width: 120px;
     }
 
     @media (max-width: 768px) {
       table {
-        font-size: 12px;
+        font-size: 14px;
       }
 
       th input, td input {
-        font-size: 12px;
+        font-size: 14px;
       }
 
       .header input.title {
-        font-size: 22px;
+        font-size: 24px;
       }
 
       .day-field input {
-        width: 160px;
-        font-size: 14px;
+        width: 180px;
+        font-size: 16px;
       }
     }
   </style>
@@ -165,15 +160,16 @@
           </tr>
         </thead>
         <tbody>
-          <tr><td><input type="text" value="8:00 - 9:00 ص"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-          <tr><td><input type="text" value="9:00 - 10:00 ص"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-          <tr><td><input type="text" value="10:00 - 11:00 ص"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-          <tr><td><input type="text" value="11:00 - 12:00 م"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-          <tr><td><input type="text" value="12:00 - 1:00 م"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-          <tr><td><input type="text" value="1:00 - 2:00 م"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-          <tr><td><input type="text" value="2:00 - 3:00 م"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-          <tr><td><input type="text" value="3:00 - 4:00 م"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-          <tr><td><input type="text" value="4:00 - 5:00 م"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+          <!-- صفوف الوقت -->
+          ${['8:00 - 9:00 ص', '9:00 - 10:00 ص', '10:00 - 11:00 ص', '11:00 - 12:00 م', '12:00 - 1:00 م', '1:00 - 2:00 م', '2:00 - 3:00 م', '3:00 - 4:00 م', '4:00 - 5:00 م'].map(time => `
+            <tr>
+              <td><input type="text" value="${time}"></td>
+              <td><input type="text"></td>
+              <td><input type="text"></td>
+              <td><input type="text"></td>
+              <td><input type="text"></td>
+              <td><input type="text"></td>
+            </tr>`).join('')}
         </tbody>
       </table>
     </div>
@@ -188,7 +184,7 @@
       const area = document.getElementById("capture-area");
       html2canvas(area, {
         backgroundColor: "#fff",
-        scale: 4,
+        scale: 5, // رفع الدقة أكثر
         useCORS: true,
       }).then(canvas => {
         const link = document.createElement("a");
@@ -200,4 +196,4 @@
   </script>
 
 </body>
-                                                                                                                                                                                  </html>
+</html>
