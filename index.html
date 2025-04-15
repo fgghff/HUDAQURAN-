@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>جدول المحاضرة اليومي</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <style>
     body {
       font-family: 'Cairo', sans-serif;
@@ -45,6 +46,26 @@
       background-color: #ffffffcc;
       color: #222;
       box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    }
+
+    .btn-container {
+      text-align: center;
+      margin: 15px 0;
+    }
+
+    .save-btn {
+      background-color: #2a5298;
+      color: white;
+      padding: 10px 18px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .save-btn:hover {
+      background-color: #1e3c72;
     }
 
     .table-wrapper {
@@ -122,38 +143,59 @@
 </head>
 <body>
 
-  <div class="header">
-    <input class="title" type="text" value="جدول المحاضرة اليومي">
-    <div class="day-field">
-      <input type="text" placeholder="اكتب اليوم هنا">
+  <div id="capture-area">
+    <div class="header">
+      <input class="title" type="text" value="جدول المحاضرة اليومي">
+      <div class="day-field">
+        <input type="text" placeholder="اكتب اليوم هنا">
+      </div>
+    </div>
+
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th><input type="text" value="الوقت"></th>
+            <th><input type="text" value="ثانوية الشهيد أحمد حسن متراس"></th>
+            <th><input type="text" value="ثانوية آمنة بنت وهب"></th>
+            <th><input type="text" value="ثانوية العلم النافع"></th>
+            <th><input type="text" value="إعدادية الحورية للبنات"></th>
+            <th><input type="text" value="ثانوية أحمد بن حنبل"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><input type="text" value="8:00 - 9:00 ص"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+          <tr><td><input type="text" value="9:00 - 10:00 ص"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+          <tr><td><input type="text" value="10:00 - 11:00 ص"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+          <tr><td><input type="text" value="11:00 - 12:00 م"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+          <tr><td><input type="text" value="12:00 - 1:00 م"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+          <tr><td><input type="text" value="1:00 - 2:00 م"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+          <tr><td><input type="text" value="2:00 - 3:00 م"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+          <tr><td><input type="text" value="3:00 - 4:00 م"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+          <tr><td><input type="text" value="4:00 - 5:00 م"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+        </tbody>
+      </table>
     </div>
   </div>
 
-  <div class="table-wrapper">
-    <table>
-      <thead>
-        <tr>
-          <th><input type="text" value="الوقت"></th>
-          <th><input type="text" value="ثانوية الشهيد أحمد حسن متراس"></th>
-          <th><input type="text" value="ثانوية آمنة بنت وهب"></th>
-          <th><input type="text" value="ثانوية العلم النافع"></th>
-          <th><input type="text" value="إعدادية الحورية للبنات"></th>
-          <th><input type="text" value="ثانوية أحمد بن حنبل"></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td><input type="text" value="8:00 - 9:00 ص"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-        <tr><td><input type="text" value="9:00 - 10:00 ص"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-        <tr><td><input type="text" value="10:00 - 11:00 ص"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-        <tr><td><input type="text" value="11:00 - 12:00 م"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-        <tr><td><input type="text" value="12:00 - 1:00 م"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-        <tr><td><input type="text" value="1:00 - 2:00 م"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-        <tr><td><input type="text" value="2:00 - 3:00 م"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-        <tr><td><input type="text" value="3:00 - 4:00 م"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-        <tr><td><input type="text" value="4:00 - 5:00 م"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
-      </tbody>
-    </table>
+  <div class="btn-container">
+    <button class="save-btn" onclick="saveAsImage()">حفظ الجدول كصورة</button>
   </div>
 
+  <script>
+    function saveAsImage() {
+      const area = document.getElementById("capture-area");
+      html2canvas(area, {
+        scale: 3,
+        useCORS: true
+      }).then(canvas => {
+        const link = document.createElement("a");
+        link.download = 'جدول_المحاضرة.png';
+        link.href = canvas.toDataURL("image/png");
+        link.click();
+      });
+    }
+  </script>
+
 </body>
-                                                                                                                                                                                                            </html>
+  </html>
