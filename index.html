@@ -125,7 +125,7 @@
 
     th:nth-child(2),
     td:nth-child(2) {
-      min-width: 240px;
+      min-width: 250px;
     }
 
     @media (max-width: 600px) {
@@ -147,7 +147,7 @@
 </head>
 <body>
 
-  <div id="capture-area">
+  <div id="capture-area" style="background-color: white; padding-bottom: 20px;">
     <div class="header">
       <input class="title" type="text" value="جدول المحاضرة اليومي">
       <div class="day-field">
@@ -190,8 +190,9 @@
     function saveAsImage() {
       const area = document.getElementById("capture-area");
       html2canvas(area, {
-        scale: 3,
-        useCORS: true
+        backgroundColor: "#fff",
+        scale: 5,
+        useCORS: true,
       }).then(canvas => {
         const link = document.createElement("a");
         link.download = 'جدول_المحاضرة.png';
@@ -202,4 +203,4 @@
   </script>
 
 </body>
-                </html>
+                                                                                                                                                                                       </html>
